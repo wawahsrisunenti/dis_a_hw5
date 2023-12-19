@@ -69,6 +69,8 @@ document
         uangSangu,
       });
 
+      alert("Record Has Been Entered");
+
       document.getElementById("name").value = "";
       document.getElementById("age").value = "";
       document.getElementById("money").value = "";
