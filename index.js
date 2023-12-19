@@ -68,7 +68,7 @@
     </script>
 
     <!-- Vanilla Javascript -->
-    <script src="script.js"></script>
+    <script src="js/records.js"></script>
 </body>
 
 </html>
