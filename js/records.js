@@ -52,16 +52,16 @@ document
     const umur = parseInt(document.getElementById("age").value);
     const uangSangu = parseFloat(document.getElementById("money").value);
 
-    if (
-      nama.length < 10 ||
-      umur < 25 ||
-      uangSangu < 100000 ||
-      uangSangu > 1000000
-    ) {
+    if (nama.length < 10) {
+      alert("Name is too short. Ensure the Name is at least 10 characters.");
+    } else if (umur < 25) {
       alert(
-        "Invalid data. Ensure the Name is at least 10 characters, Age is at least 25 years, and Allowance is between 100 thousand to 1 million."
+        "Sorry, you are not eligible to register. Minimum age required is 25 years."
       );
-      return;
+    } else if (uangSangu < 100000 || uangSangu > 1000000) {
+      alert(
+        "Invalid Uang Sangu. Uang Sangu must be between 100 thousand to 1 million."
+      );
     }
 
     pendaftarList.push({
