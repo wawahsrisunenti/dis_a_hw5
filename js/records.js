@@ -24,10 +24,6 @@ function tampilkanData() {
   const pendaftarTable = document.getElementById("pendaftar-list");
   const { rataRataUmur, rataRataUangSangu } = hitungRataRata();
 
-  resume.innerHTML = `On average, registrations have an allowance of ${rataRataUangSangu.toFixed(
-    0
-  )} dengan rata-rata umur ${rataRataUmur.toFixed(0)}`;
-
   pendaftarTable.innerHTML = "";
   for (const pendaftar of pendaftarList) {
     const row = `
@@ -39,6 +35,12 @@ function tampilkanData() {
         `;
     pendaftarTable.innerHTML += row;
   }
+  averageAge.innerHTML = `The average age of registrants is ${rataRataUmur.toFixed(
+    0
+  )}`;
+  averageMoney.innerHTML = `The average uang sangu of registrants is Rp ${rataRataUangSangu.toFixed(
+    2
+  )}`;
 }
 
 document
