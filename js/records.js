@@ -1,44 +1,44 @@
-const pendaftarList = [];
+const registerRecord = [];
 
-function hitungRataRata() {
-  let totalUmur = 0;
-  let totalUangSangu = 0;
+function countAverage() {
+  let totalAge = 0;
+  let totalMoney = 0;
 
-  for (const pendaftar of pendaftarList) {
-    totalUmur += pendaftar.umur;
-    totalUangSangu += pendaftar.uangSangu;
+  for (const register of registerRecord) {
+    totalAge += register.age;
+    totalMoney += register.money;
   }
 
-  const rataRataUmur = totalUmur / pendaftarList.length;
-  const rataRataUangSangu = totalUangSangu / pendaftarList.length;
+  const ageAverage = totalAge / registerRecord.length;
+  const moneyAverage = totalMoney / registerRecord.length;
 
   return {
-    rataRataUmur,
-    rataRataUangSangu,
+    ageAverage,
+    moneyAverage,
   };
 }
 
 function tampilkanData() {
   const averageAge = document.getElementById("average-age");
   const averageMoney = document.getElementById("average-money");
-  const pendaftarTable = document.getElementById("pendaftar-list");
-  const { rataRataUmur, rataRataUangSangu } = hitungRataRata();
+  const registerTable = document.getElementById("register-list");
+  const { ageAverage, moneyAverage } = countAverage();
 
-  pendaftarTable.innerHTML = "";
-  for (const pendaftar of pendaftarList) {
+  registerTable.innerHTML = "";
+  for (const register of registerRecord) {
     const row = `
             <tr>
-                <td>${pendaftar.nama}</td>
-                <td>${pendaftar.umur}</td>
-                <td>${pendaftar.uangSangu}</td>
+                <td>${register.name}</td>
+                <td>${register.age}</td>
+                <td>${register.money}</td>
             </tr>
         `;
-    pendaftarTable.innerHTML += row;
+    registerTable.innerHTML += row;
   }
-  averageAge.innerHTML = `The average age of registrants is ${rataRataUmur.toFixed(
+  averageAge.innerHTML = `The average age of registrants is ${ageAverage.toFixed(
     0
   )}`;
-  averageMoney.innerHTML = `The average uang sangu of registrants is Rp ${rataRataUangSangu.toFixed(
+  averageMoney.innerHTML = `The average uang sangu of registrants is Rp ${moneyAverage.toFixed(
     2
   )},-`;
 }
@@ -48,25 +48,25 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const nama = document.getElementById("name").value;
-    const umur = parseInt(document.getElementById("age").value);
-    const uangSangu = parseFloat(document.getElementById("money").value);
+    const name = document.getElementById("name").value;
+    const age = parseInt(document.getElementById("age").value);
+    const money = parseFloat(document.getElementById("money").value);
 
-    if (nama.length < 10) {
+    if (name.length < 10) {
       alert("Name is too short. Ensure the Name is at least 10 characters.");
-    } else if (umur < 25) {
+    } else if (age < 25) {
       alert(
         "Sorry, you are not eligible to register. Minimum age required is 25 years."
       );
-    } else if (uangSangu < 100000 || uangSangu > 1000000) {
+    } else if (money < 100000 || money > 1000000) {
       alert(
         "Invalid Uang Sangu. Uang Sangu must be between 100 thousand to 1 million."
       );
     } else {
-      pendaftarList.push({
-        nama,
-        umur,
-        uangSangu,
+      registerRecord.push({
+        name,
+        age,
+        money,
       });
 
       alert("Record Has Been Entered");
