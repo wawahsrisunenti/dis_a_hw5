@@ -1,42 +1,43 @@
-const registerRecord = [];
+const pendaftarList = [];
 
-function average() {
-  let totalAge = 0;
-  let totalMoney = 0;
+function hitungRataRata() {
+  let totalUmur = 0;
+  let totalUangSangu = 0;
 
-  for (const register of registerRecord) {
-    totalAge += register.age;
-    totalMoney += register.money;
+  for (const pendaftar of pendaftarList) {
+    totalUmur += pendaftar.umur;
+    totalUangSangu += pendaftar.uangSangu;
   }
 
-  const averageAge = totalAge / registerRecord.length;
-  const averageMoney = totalMoney / registerRecord.length;
+  const rataRataUmur = totalUmur / pendaftarList.length;
+  const rataRataUangSangu = totalUangSangu / pendaftarList.length;
 
   return {
-    averageAge,
-    averageMoney,
+    rataRataUmur,
+    rataRataUangSangu,
   };
 }
 
 function tampilkanData() {
-  const resume = document.getElementById("resume");
-  const registerTable = document.getElementById("list-data_register");
-  const { averageAge, averageMoney } = average();
+  const averageAge = document.getElementById("average-age");
+  const averageMoney = document.getElementById("average-money");
+  const pendaftarTable = document.getElementById("pendaftar-list");
+  const { rataRataUmur, rataRataUangSangu } = hitungRataRata();
 
-  resume.innerHTML = `On average, registrations have an allowance of ${averageMoney.toFixed(
-    2
-  )} dengan rata-rata umur ${averageAge.toFixed(2)}`;
+  resume.innerHTML = `On average, registrations have an allowance of ${rataRataUangSangu.toFixed(
+    0
+  )} dengan rata-rata umur ${rataRataUmur.toFixed(0)}`;
 
-  registerTable.innerHTML = "";
-  for (const register of registerRecord) {
+  pendaftarTable.innerHTML = "";
+  for (const pendaftar of pendaftarList) {
     const row = `
             <tr>
-                <th>${register.name}</th>
-                <th>${register.age}</th>
-                <th>${register.money}</th>
+                <td>${pendaftar.nama}</td>
+                <td>${pendaftar.umur}</td>
+                <td>${pendaftar.uangSangu}</td>
             </tr>
         `;
-    registerTable.innerHTML += row;
+    pendaftarTable.innerHTML += row;
   }
 }
 
@@ -45,21 +46,26 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const age = parseInt(document.getElementById("age").value);
-    const money = parseFloat(document.getElementById("money").value);
+    const nama = document.getElementById("name").value;
+    const umur = parseInt(document.getElementById("age").value);
+    const uangSangu = parseFloat(document.getElementById("money").value);
 
-    if (name.length < 10 || age < 25 || money < 100000 || money > 1000000) {
+    if (
+      nama.length < 10 ||
+      umur < 25 ||
+      uangSangu < 100000 ||
+      uangSangu > 1000000
+    ) {
       alert(
         "Invalid data. Ensure the Name is at least 10 characters, Age is at least 25 years, and Allowance is between 100 thousand to 1 million."
       );
       return;
     }
 
-    registerRecord.push({
-      name,
-      age,
-      money,
+    pendaftarList.push({
+      nama,
+      umur,
+      uangSangu,
     });
 
     document.getElementById("name").value = "";
