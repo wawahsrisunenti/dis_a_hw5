@@ -1,16 +1,16 @@
-const registerList = [];
+const registerRecord = [];
 
 function average() {
   let totalAge = 0;
   let totalMoney = 0;
 
-  for (const register of registerList) {
+  for (const register of registerRecord) {
     totalAge += register.age;
     totalMoney += register.money;
   }
 
-  const averageAge = totalAge / registerList.length;
-  const averageMoney = totalMoney / registerList.length;
+  const averageAge = totalAge / registerRecord.length;
+  const averageMoney = totalMoney / registerRecord.length;
 
   return {
     averageAge,
@@ -20,7 +20,7 @@ function average() {
 
 function tampilkanData() {
   const resume = document.getElementById("resume");
-  const registerTable = document.getElementById("register-list");
+  const registerTable = document.getElementById("list-data_register");
   const { averageAge, averageMoney } = average();
 
   resume.innerHTML = `On average, registrations have an allowance of ${averageMoney.toFixed(
@@ -28,12 +28,12 @@ function tampilkanData() {
   )} dengan rata-rata umur ${averageAge.toFixed(2)}`;
 
   registerTable.innerHTML = "";
-  for (const register of registerList) {
+  for (const register of registerRecord) {
     const row = `
             <tr>
-                <td>${register.name}</td>
-                <td>${register.age}</td>
-                <td>${register.money}</td>
+                <th>${register.name}</th>
+                <th>${register.age}</th>
+                <th>${register.money}</th>
             </tr>
         `;
     registerTable.innerHTML += row;
@@ -56,7 +56,7 @@ document
       return;
     }
 
-    registerList.push({
+    registerRecord.push({
       name,
       age,
       money,
