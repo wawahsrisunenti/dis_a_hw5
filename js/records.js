@@ -40,7 +40,7 @@ function tampilkanData() {
   )}`;
   averageMoney.innerHTML = `The average uang sangu of registrants is Rp ${rataRataUangSangu.toFixed(
     2
-  )}`;
+  )},-`;
 }
 
 document
@@ -62,17 +62,17 @@ document
       alert(
         "Invalid Uang Sangu. Uang Sangu must be between 100 thousand to 1 million."
       );
+    } else {
+      pendaftarList.push({
+        nama,
+        umur,
+        uangSangu,
+      });
+
+      document.getElementById("name").value = "";
+      document.getElementById("age").value = "";
+      document.getElementById("money").value = "";
+
+      tampilkanData();
     }
-
-    pendaftarList.push({
-      nama,
-      umur,
-      uangSangu,
-    });
-
-    document.getElementById("name").value = "";
-    document.getElementById("age").value = "";
-    document.getElementById("money").value = "";
-
-    tampilkanData();
   });
