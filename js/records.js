@@ -18,13 +18,13 @@ function countAverage() {
   };
 }
 
-function tampilkanData() {
-  const averageAge = document.getElementById("average-age");
-  const averageMoney = document.getElementById("average-money");
-  const registerTable = document.getElementById("register-list");
+function showRecord() {
+  const showAverageAge = document.getElementById("average-age");
+  const showAverageMoney = document.getElementById("average-money");
+  const showRegisterRecord = document.getElementById("register-list");
   const { ageAverage, moneyAverage } = countAverage();
 
-  registerTable.innerHTML = "";
+  showRegisterRecord.innerHTML = "";
   for (const register of registerRecord) {
     const row = `
             <tr>
@@ -33,12 +33,12 @@ function tampilkanData() {
                 <td>${register.money}</td>
             </tr>
         `;
-    registerTable.innerHTML += row;
+    showRegisterRecord.innerHTML += row;
   }
-  averageAge.innerHTML = `The average age of registrants is ${ageAverage.toFixed(
+  showAverageAge.innerHTML = `The average age of registrants is ${ageAverage.toFixed(
     0
   )}`;
-  averageMoney.innerHTML = `The average uang sangu of registrants is Rp ${moneyAverage.toFixed(
+  showAverageMoney.innerHTML = `The average uang sangu of registrants is Rp ${moneyAverage.toFixed(
     2
   )},-`;
 }
@@ -75,6 +75,6 @@ document
       document.getElementById("age").value = "";
       document.getElementById("money").value = "";
 
-      tampilkanData();
+      showRecord();
     }
   });
