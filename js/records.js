@@ -1,3 +1,45 @@
+const registerList = [];
+
+function average() {
+  let totalAge = 0;
+  let totalMoney = 0;
+
+  for (const register of registerList) {
+    totalAge += register.age;
+    totalMoney += register.money;
+  }
+
+  const averageAge = totalAge / registerList.length;
+  const averageMoney = totalMoney / registerList.length;
+
+  return {
+    averageAge,
+    averageMoney,
+  };
+}
+
+function tampilkanData() {
+  const resume = document.getElementById("resume");
+  const registerTable = document.getElementById("register-list");
+  const { averageAge, averageMoney } = average();
+
+  resume.innerHTML = `On average, registrations have an allowance of ${averageMoney.toFixed(
+    2
+  )} dengan rata-rata umur ${averageAge.toFixed(2)}`;
+
+  registerTable.innerHTML = "";
+  for (const register of registerList) {
+    const row = `
+            <tr>
+                <td>${register.name}</td>
+                <td>${register.age}</td>
+                <td>${register.money}</td>
+            </tr>
+        `;
+    registerTable.innerHTML += row;
+  }
+}
+
 document
   .getElementById("registration-form")
   .addEventListener("submit", function (event) {
@@ -14,7 +56,11 @@ document
       return;
     }
 
-    pendaftarList.push({ name, age, money });
+    registerList.push({
+      name,
+      age,
+      money,
+    });
 
     document.getElementById("name").value = "";
     document.getElementById("age").value = "";
