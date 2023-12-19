@@ -30,11 +30,11 @@
             <div class="tab-pane fade show active" id="registration" role="tabpanel" aria-labelledby="registration-tab">
                 <form id="registration-form">
                     <div class="mb-3 mt-5">
-                        <label for="name" class="form-label">Nama</label>
+                        <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="age" class="form-label">Umur</label>
+                        <label for="age" class="form-label">Age</label>
                         <input type="number" class="form-control" id="age" required>
                     </div>
                     <div class="mb-3">
@@ -50,12 +50,12 @@
                 <table class="table table-bordered mt-5">
                     <thead>
                         <tr>
-                            <th class="col-5">Nama</th>
-                            <th class="col-3">Umur</th>
+                            <th class="col-5">Name</th>
+                            <th class="col-3">Age</th>
                             <th class="col-4">Uang Sangu(RP)</th>
                         </tr>
                     </thead>
-                    <tbody id="pendaftar-list"></tbody>
+                    <tbody id="register-list"></tbody>
                 </table>
                 <h3 id="average-age"></h3>
                 <h3 id="average-money"></h3>
